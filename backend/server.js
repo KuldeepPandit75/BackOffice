@@ -34,8 +34,9 @@ app.post("/update-data", async (req, res) => {
 
 // GET route to fetch data (for dashboard)
 app.get("/data", async (req, res) => {
+  const {category, subCategory}=req.query;
   try {
-    const data = await DataModel.find();
+    const data = await DataModel.find({category, subCategory});
     res.send({success:true, data});
   } catch (err) {
     res.status(500).json({ error: "Failed to fetch data" });

@@ -11,10 +11,10 @@ export default function ActivationDashboard() {
     fetchData(subCategory);
   }, [subCategory]);
 
-  async function fetchData() {
+  async function fetchData(selected) {
     setLoading(true);
     try {
-      const res = await fetch(`https://backoffice-x5j3.onrender.com/data`);
+      const res = await fetch(`https://backoffice-x5j3.onrender.com/data?category=Activation&subCategory=${encodeURIComponent(selected)}`);
       console.log(res);
       const json = await res.json();
       setTableData(json.data || []);
