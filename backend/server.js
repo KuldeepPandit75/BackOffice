@@ -36,7 +36,7 @@ app.post("/update-data", async (req, res) => {
 app.get("/data", async (req, res) => {
   try {
     const data = await DataModel.find();
-    res.json(data);
+    res.send({success:true, data});
   } catch (err) {
     res.status(500).json({ error: "Failed to fetch data" });
   }
