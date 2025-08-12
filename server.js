@@ -18,8 +18,9 @@ const DataModel = mongoose.model("SheetData", DataSchema);
 
 // POST route to update data
 app.post("/update-data", async (req, res) => {
+    console.log(req.body);
   try {
-    await DataModel.deleteMany({}); // Clear old data
+    await DataModel.deleteMany({});
     await DataModel.insertMany(req.body);
     res.json({ message: "Data inserted successfully" });
   } catch (err) {
